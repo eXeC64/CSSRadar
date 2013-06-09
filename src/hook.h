@@ -1,10 +1,8 @@
 #pragma once
 
 #include <stdint.h>
+#include <stdbool.h>
 
-typedef uint8_t bool;
-#define false 0
-#define true 1
 
 #define TEAM_NONE 0
 #define TEAM_SPECTATE 1
