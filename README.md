@@ -1,11 +1,11 @@
-SuperStrike64
-=============
+CSSRadar
+========
 A rought proof of concept external radar cheat for Counter-Strike:Source on Linux.
 
 
 This was literally thrown together in one all-night'er with no preparation.
 
-![SuperStrike64 Screenshot](http://i.imgur.com/8NEnqBp.jpg)
+![CSSRadar Screenshot](http://i.imgur.com/8NEnqBp.jpg)
 
 
 Development
