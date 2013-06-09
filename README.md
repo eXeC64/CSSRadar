@@ -1,6 +1,6 @@
 CSSRadar
 ========
-A rought proof of concept external radar cheat for Counter-Strike:Source on Linux.
+A rough proof of concept external radar cheat for Counter-Strike:Source on Linux.
 
 
 This was literally thrown together in one all-night'er with no preparation.
