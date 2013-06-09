@@ -48,3 +48,8 @@ Valve Anti-Cheat
 While I can't condone using this in live, online play it is worth nothing that owing to the method used the likelyhood of being caught by VAC is extremely low. The cheat makes no modifications to the game, and only attaches for a split second to read out the latest data. The only thing it does that the game itself could try to detect is it attaching/dettaching.
 
 The only viable defense against this is to pro-actively scan for this cheat in global memory. However, Punkbuster tried that a few years ago... and it did not end well. (The cheaters discovered that by dumping certain strings into IRC channels frequented by professional gamers they could get many professionals wrongly banned)
+
+
+Disclaimer & License
+--------------------
+If you get caught cheating in VAC protected servers, or competitive leagues with this it's your own fault, not mine. I take no responsibility for what you do with it. The code is only published for academic purposes, and as such it is not licensed publically. I, Harry Jeffery, reserve all rights.
