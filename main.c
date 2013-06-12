@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
         return 0;
     }
 
-    sfVideoMode mode = {1024, 768, 32};
+    sfVideoMode mode = {768, 768, 32};
     sfRenderWindow* window;
 
     window = sfRenderWindow_create(mode, "CSSRadar", sfTitlebar | sfClose, NULL);
@@ -87,7 +87,7 @@ int main(int argc, char** argv) {
             /* Line up map with player coordinates */
             if(strncmp(current_map, "de_dust2", 40) == 0) {
                 sfVector2f view_size = {5000, 4000};
-                sfVector2f view_center = {-2048, -1024};
+                sfVector2f view_center = {256,1024};
                 sfVector2f bg_size = {4150, 4350};
                 sfVector2f bg_pos = {-1850,-1060};
                 sfView_setSize(view, view_size);
