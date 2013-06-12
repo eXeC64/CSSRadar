@@ -35,7 +35,7 @@ So, now I had an array of player data, the next task was to be able to find it p
 
 Jumping back into gameconqueror I switched to byte array search, and started looking for pointers. Pretending that the pointer to my structure was `0x12345678` I entered `?? 56 34 12` into the bytesearch (the bytes are reversed because the source engine is compiled as x86, which is little endian).
 
-This threw up a few results, referring back to the output from `cat /proc/$(pidof hl2_linux)/maps` I discovered one of these points was within `cstrike/bin/client.so`. So then I simply have to subtract the address that client.so was loaded into memory at from the pointer's address and I have an offset into client.so that'll reliably give me this data structure's address every time, regardless of where in the stack it is located.
+This threw up a few results, referring back to the output from `cat /proc/$(pidof hl2_linux)/maps` I discovered one of these points was within `cstrike/bin/client.so`. So then I simply have to subtract the address that client.so was loaded into memory at from the pointer's address and I have an offset into client.so that'll reliably give me this data structure's address every time, regardless of where in the heap it is located.
 
 So now I had that, it was time to get coding. After a bit of research I got a simple C program running that attached to cstrike, copied some memory, and printed a list of all connected players, their name, health and location. A radar cheat in the making.
 
@@ -52,4 +52,4 @@ The only viable defense against this is to pro-actively scan for this cheat in g
 
 Disclaimer & License
 --------------------
-If you get caught cheating in VAC protected servers, or competitive leagues with this it's your own fault, not mine. I take no responsibility for what you do with it. The code is only published for academic purposes, and as such it is not licensed publically. I, Harry Jeffery, reserve all rights.
+If you get caught cheating in VAC protected servers, or competitive leagues with this it's your own fault, not mine. I take no responsibility for what you do with it. The code is only published for academic purposes, and as such it is not licensed publically. I reserve all rights.
