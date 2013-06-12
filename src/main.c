@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <sys/ptrace.h>
 #include <stdint.h>
-#include <stdbool.h>
 
 #include <SFML/Graphics.h>
 
@@ -22,8 +21,8 @@ typedef struct player_s {
     uint8_t     padding3[204];
 } player_t;
 
-uint32_t find_dylib(uint32_t pid, const char* dylib, bool find_end);
-void mem_read(uint32_t pid, uint32_t remote_addr, uint32_t* buf, size_t buf_size);
+uint32_t find_dylib(uint32_t pid, const char* dylib);
+uint32_t mem_read(uint32_t pid, uint32_t remote_addr, uint32_t* buf, size_t buf_size);
 
 int main(int argc, char** argv) {
 
@@ -52,8 +51,8 @@ int main(int argc, char** argv) {
 
     int pid = atoi(argv[1]);
 
-    uint32_t client = find_dylib(pid, "cstrike/bin/client.so", 0);
-    uint32_t engine = find_dylib(pid, "bin/engine.so", 0);
+    uint32_t client = find_dylib(pid, "cstrike/bin/client.so");
+    uint32_t engine = find_dylib(pid, "bin/engine.so");
 
     uint32_t current_map_addr = engine + 0xae769c;
 
@@ -149,13 +148,9 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-uint32_t find_dylib(uint32_t pid, const char* dylib, bool find_end) {
+uint32_t find_dylib(uint32_t pid, const char* dylib) {
     char* cmd[256];
-    if(!find_end) {
-        snprintf(cmd, 256, "grep \"%s\" /proc/%i/maps | head -n 1 | cut -d \"-\" -f1", dylib, pid);
-    } else {
-        snprintf(cmd, 256, "grep \"%s\" /proc/%i/maps | tail -n 1 | cut -d \"-\" -f2", dylib, pid);
-    }
+    snprintf(cmd, 256, "grep \"%s\" /proc/%i/maps | head -n 1 | cut -d \"-\" -f1", dylib, pid);
 
     FILE* maps = popen(cmd, "r");
 
@@ -170,11 +165,9 @@ uint32_t find_dylib(uint32_t pid, const char* dylib, bool find_end) {
     return ptr;
 }
 
-void mem_read(uint32_t pid, uint32_t remote_addr, uint32_t* buf, size_t buf_size) {
+uint32_t mem_read(uint32_t pid, uint32_t remote_addr, uint32_t* buf, size_t buf_size) {
 
-    if(buf_size % 4) {
-        return;
-    }
+    buf_size -= buf_size % 4;
 
     ptrace(PTRACE_ATTACH, pid, NULL, NULL);
     waitpid(pid, NULL, 0);
@@ -184,4 +177,6 @@ void mem_read(uint32_t pid, uint32_t remote_addr, uint32_t* buf, size_t buf_size
     }
 
     ptrace(PTRACE_DETACH, pid, NULL, NULL);
+
+    return buf_size;
 }
