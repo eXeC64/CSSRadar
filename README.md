@@ -45,9 +45,9 @@ It was fun, and a lot easier to get up and running than I expected. I think I ma
 
 Valve Anti-Cheat
 ----------------
-While I can't condone using this in live, online play it is worth nothing that owing to the method used the likelyhood of being caught by VAC is extremely low. The cheat makes no modifications to the game, and only attaches for a split second to read out the latest data. The only thing it does that the game itself could try to detect is it attaching/dettaching.
+While I can't condone using this in live, online play it is worth nothing that owing to the method used the likelyhood of being caught by VAC is low. The cheat makes no modifications to the game, and only attaches for a split second to read out the latest data. The only thing it does that the game itself could try to detect is it attaching/dettaching.
 
-The only viable defense against this is to pro-actively scan for this cheat in global memory. However, Punkbuster tried that a few years ago... and it did not end well. (The cheaters discovered that by dumping certain strings into IRC channels frequented by professional gamers they could get many professionals wrongly banned)
+The other defense would be looking at all running processes, trying to identify the cheat, which would be more reliable. However, that can be overcome by creating a kernel module that hides the process, much like a rootkit would.
 
 
 Disclaimer & License
